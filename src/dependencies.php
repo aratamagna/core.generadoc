@@ -17,3 +17,8 @@ $container['logger'] = function ($c) {
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
 };
+
+// handler
+$container['client'] = function ($c) {
+  return new MongoDB\Client("mongodb://localhost:27017");
+}
