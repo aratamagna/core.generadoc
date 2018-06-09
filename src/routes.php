@@ -26,13 +26,13 @@ $app->get('/form/{id}', function (Request $request, Response $response, array $a
   return $response->withJson(json_encode(iterator_to_array($form, false)), 200);
 });
 
-$app->get('/form/input', function (Request $request, Response $response, array $args) {
+$app->get('/input', function (Request $request, Response $response, array $args) {
   $collection = $this->client->generadoc->input;
   $inputlist = $collection->find();
   return $response->withJson(json_encode(iterator_to_array($inputlist, false)), 200);
 });
 
-$app->post('/form/input', function ($request, $response, $args) {
+$app->post('/input', function ($request, $response, $args) {
   $input = $request->getParsedBody();
 
   $collection = $this->client->generadoc->input;
@@ -40,7 +40,7 @@ $app->post('/form/input', function ($request, $response, $args) {
   return $response->withJson($insertOneResult->getInsertedId(), 201);
 });
 
-$app->get('/form/input/{id}', function (Request $request, Response $response, array $args) {
+$app->get('/input/{id}', function (Request $request, Response $response, array $args) {
   $inputid = $args['id'];
   $collection = $this->client->generadoc->input;
   $input = $collection->findOne(['_id' => $inputid]);
