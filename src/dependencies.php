@@ -20,5 +20,5 @@ $container['logger'] = function ($c) {
 
 // handler
 $container['client'] = function ($c) {
-  return new MongoDB\Client();
+  return new MongoDB\Client("mongodb://localhost:27017");
 };
