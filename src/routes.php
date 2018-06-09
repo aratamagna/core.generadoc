@@ -8,7 +8,7 @@ use Slim\Http\Response;
 $app->get('/form', function (Request $request, Response $response, array $args) {
   $collection = $this->client->generadoc->form;
   $forms = $collection->find([]);
-  return $response->withJson(json_encode(iterator_to_array($forms, false)), 200);
+  return $response->withJson(json_encode([]), 200);
 });
 
 $app->post('/form', function ($request, $response, $args) {
