@@ -72,6 +72,6 @@ $app->post('/template', function ($request, $response, $args) {
 $app->get('/template/{id}', function (Request $request, Response $response, array $args) {
   $tempid = $args['id'];
   $collection = $this->client->generadoc->template;
-  $template = $collection->find(['id' => $tempid]);
-  return $response->withJson(json_encode($tempid), 200);
+  $template = $collection->find(['id' => intval($tempid)]);
+  return $response->withJson(json_encode($template), 200);
 });
