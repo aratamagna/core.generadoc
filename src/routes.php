@@ -72,6 +72,9 @@ $app->post('/template', function ($request, $response, $args) {
 $app->get('/template/{id}', function (Request $request, Response $response, array $args) {
   $tempid = $args['id'];
   $template = $this->client->generadoc->template->find(['id' => $tempid]);
-  echo $template[0];
-  return $response->withJson(json_encode($template), 200);
+  if ($templater->count() > 0){
+    $template->next();
+    return $response->withJson(json_encode($template->current()), 200);
+  }
+  return $response;
 });
